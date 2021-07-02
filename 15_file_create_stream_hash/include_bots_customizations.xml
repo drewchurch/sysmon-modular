@@ -1,0 +1,18 @@
+<Sysmon schemaversion="4.30">
+  <EventFiltering>
+    <RuleGroup name="" groupRelation="or">
+      <FileCreateStreamHash onmatch="include">
+        <TargetFilename condition="end with">.doc</TargetFilename>
+        <TargetFilename condition="end with">.docm</TargetFilename>
+        <TargetFilename condition="end with">.docx</TargetFilename>
+        <TargetFilename condition="end with">.ppt</TargetFilename>
+        <TargetFilename condition="end with">.pptx</TargetFilename>
+        <TargetFilename condition="end with">.pptm</TargetFilename>
+        <TargetFilename condition="end with">.ps1m</TargetFilename>
+        <TargetFilename condition="end with">.xls</TargetFilename>
+        <TargetFilename condition="end with">.xlsm</TargetFilename>
+        <TargetFilename condition="end with">.xlsx</TargetFilename>
+      </FileCreateStreamHash>
+    </RuleGroup>
+  </EventFiltering>
+</Sysmon>

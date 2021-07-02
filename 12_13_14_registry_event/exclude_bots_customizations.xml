@@ -1,0 +1,20 @@
+<Sysmon schemaversion="4.30">
+	<EventFiltering>
+		<RuleGroup name="" groupRelation="or">
+			<RegistryEvent onmatch="exclude">
+			    <TargetObject condition="contains">\{CAFEEFAC-</TargetObject>
+			    <EventType condition="is">CreateKey</EventType>
+			    <TargetObject condition="begin with">HKLM\COMPONENTS</TargetObject>
+                <!--SECTION: Office C2R-->
+                <TargetObject condition="contains">VirtualStore\MACHINE\SOFTWARE\Microsoft\Office\ClickToRun\</TargetObject> <!--Microsoft: SearchProtocolHost writes to OfficeC2R registry for Outlook, seemingly regarding mail indexing-->
+                <TargetObject condition="begin with">HKLM\SOFTWARE\Microsoft\Office\ClickToRun\</TargetObject> <!--Microsoft: Virtual registry for Office-->
+                <!--SECTION: 3rd party-->
+                <Image condition="is">C:\Program Files\WIDCOMM\Bluetooth Software\btwdins.exe</Image> <!--Constantly writes to HKLM-->
+                <TargetObject condition="begin with">HKCR\VLC.</TargetObject> <!--VLC update noise-->
+                <TargetObject condition="begin with">HKCR\iTunes.</TargetObject> <!--Apple: iTunes update noise-->
+                <!--WINEVT publishers noise-->
+                <TargetObject condition="is">HKLM\Software\Microsoft\Windows\CurrentVersion\WINEVT\Publishers\{945a8954-c147-4acd-923f-40c45405a658}</TargetObject> <!--Windows update-->
+			</RegistryEvent>
+		</RuleGroup>
+	</EventFiltering>
+</Sysmon>

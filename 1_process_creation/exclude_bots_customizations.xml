@@ -1,0 +1,21 @@
+<Sysmon schemaversion="4.30">
+  <EventFiltering>
+    <RuleGroup name="" groupRelation="or">
+      <ProcessCreate onmatch="exclude">
+        <ParentImage>C:\Program Files\SplunkUniversalForwarder\bin\splunkd.exe</ParentImage>
+        <ParentImage>C:\Program Files\Splunk\bin\splunkd.exe</ParentImage>
+        <ParentImage>D:\Program Files\SplunkUniversalForwarder\bin\splunkd.exe</ParentImage>
+        <ParentImage>D:\Program Files\Splunk\bin\splunkd.exe</ParentImage>
+        <ParentImage>C:\Program Files\SplunkUniversalForwarder\bin\splunk.exe</ParentImage>
+        <ParentImage>D:\Program Files\SplunkUniversalForwarder\bin\splunk.exe</ParentImage>
+        <ParentCommandLine condition="end with">\bin\win_timesync_configuration.bat""</ParentCommandLine>
+        <ParentCommandLine condition="end with">\bin\win_timesync_status.bat""</ParentCommandLine>
+        <ParentCommandLine condition="end with">\bin\win_installed_apps.bat""</ParentCommandLine>
+        <ParentCommandLine condition="end with">\bin\win_listening_ports.bat""</ParentCommandLine>
+        <CommandLine condition="contains">SplunkUniversalForwarder</CommandLine>
+        <ParentCommandLine condition="contains">wmic  os get LocalDateTime</ParentCommandLine>
+        <CommandLine condition="contains">wmic  os get LocalDateTime</CommandLine>
+      </ProcessCreate>
+    </RuleGroup>
+  </EventFiltering>
+</Sysmon>

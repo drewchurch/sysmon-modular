@@ -1,0 +1,12 @@
+<Sysmon schemaversion="4.40">
+  <EventFiltering>
+    <RuleGroup name="" groupRelation="or">
+      <NetworkConnect onmatch="exclude">
+        <Image condition="contains">SplunkUniversalForwarder</Image>
+        <DestinationIp condition="is">127.0.0.1</DestinationIp> <!--Credit @ITProPaul-->
+		<DestinationIp condition="begin with">fe80:0:0:0</DestinationIp> <!--Credit @ITProPaul-->
+        <Image condition="end with">AppData\Local\Microsoft\Teams\current\Teams.exe</Image> <!--Microsoft: Teams-->
+      </NetworkConnect>
+    </RuleGroup>
+  </EventFiltering>
+</Sysmon>
