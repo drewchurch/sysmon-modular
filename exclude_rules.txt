@@ -21,3 +21,4 @@
 1_process_creation/include_windows_defender_tampering.xml
 1_process_creation/include_windows_remote_management.xml
 1_process_creation/include_wsl.xml
+19_20_21_wmi_event/include_wmi_create.xml

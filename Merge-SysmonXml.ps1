@@ -127,7 +127,7 @@ function Merge-AllSysmonXml
                 Write-Verbose "$FilePaths"
             }
         }
-    
+
     }
 
     end{
@@ -184,7 +184,7 @@ function Merge-SysmonXml
 
         [switch]$AsString
     )
-    
+
     $Rules = [ordered]@{
         ProcessCreate = [ordered]@{
             include = @()
@@ -249,7 +249,7 @@ function Merge-SysmonXml
         FileDelete = [ordered]@{
             include = @()
             exclude = @()
-        } 
+        }
         ClipboardChange = [ordered]@{
             include = @()
             exclude = @()
@@ -257,11 +257,11 @@ function Merge-SysmonXml
         ProcessTampering = [ordered]@{
             include = @()
             exclude = @()
-        } 
+        }
         FileDeleteDetected = [ordered]@{
             include = @()
             exclude = @()
-        }                                
+        }
     }
 
     $newDoc = [xml]@'
@@ -356,14 +356,14 @@ function Merge-SysmonXml
     <RuleGroup groupRelation="or">
     <!-- Event ID 17,18 == PipeEvent. Log Named pipe created & Named pipe connected - Excludes -->
     <PipeEvent onmatch="exclude"/>
-    </RuleGroup>    
+    </RuleGroup>
     <RuleGroup groupRelation="or">
         <!-- Event ID 19,20,21, == WmiEvent. Log all WmiEventFilter, WmiEventConsumer, WmiEventConsumerToFilter activity - Includes -->
-        <WmiEvent onmatch="include"/>
+        <WmiEvent onmatch="exclude"/>
     </RuleGroup>
     <RuleGroup groupRelation="or">
         <!-- Event ID 22 == DNS Queries and their results Excludes -->
-        <!--Default to log all and exclude a few common processes-->        
+        <!--Default to log all and exclude a few common processes-->
         <DnsQuery onmatch="exclude"/>
     </RuleGroup>
     <RuleGroup groupRelation="or">
@@ -378,7 +378,7 @@ function Merge-SysmonXml
         <!-- Event ID 24 == Clipboard change events, only captures text, not files - Includes -->
         <!-- Default set to disabled due to privacy implications and potential data you leave for attackers, enable with care!-->
         <ClipboardChange onmatch="include"/>
-    </RuleGroup> 
+    </RuleGroup>
     <RuleGroup groupRelation="or">
         <!-- Event ID 25 == Process tampering events - Excludes -->
         <ProcessTampering onmatch="exclude"/>
