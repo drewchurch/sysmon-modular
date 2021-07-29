@@ -1,0 +1,10 @@
+<Sysmon schemaversion="4.30">
+   <EventFiltering>
+      <RuleGroup name="" groupRelation="or">
+         <FileDelete onmatch="include">
+            <TargetFilename condition="contains">C:\Program Files\Microsoft SQL Server\ODBC</TargetFilename>
+            <TargetFilename condition="contains">C:\inetpub\wwwroot</TargetFilename>
+         </FileDelete>
+      </RuleGroup>
+   </EventFiltering>
+</Sysmon>
