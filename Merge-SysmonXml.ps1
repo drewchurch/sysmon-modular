@@ -273,7 +273,7 @@ function Merge-SysmonXml
 <EventFiltering>
     <RuleGroup groupRelation="or">
         <!-- Event ID 1 == Process Creation - Includes -->
-        <ProcessCreate onmatch="include"/>
+        <ProcessCreate onmatch="exclude"/>
     </RuleGroup>
     <RuleGroup groupRelation="or">
         <!-- Event ID 1 == Process Creation - Excludes -->

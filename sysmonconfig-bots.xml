@@ -9,10 +9,6 @@
   <EventFiltering>
     <RuleGroup groupRelation="or">
       <!-- Event ID 1 == Process Creation - Includes -->
-      <ProcessCreate onmatch="include" />
-    </RuleGroup>
-    <RuleGroup groupRelation="or">
-      <!-- Event ID 1 == Process Creation - Excludes -->
       <ProcessCreate onmatch="exclude">
         <Rule groupRelation="and">
           <Image condition="end with">AcroRd32.exe</Image>
@@ -210,6 +206,10 @@
         <ParentCommandLine condition="begin with">%%SystemRoot%%\system32\csrss.exe ObjectDirectory=\Windows</ParentCommandLine>
         <ParentImage condition="is">C:\Windows\system32\SearchIndexer.exe</ParentImage>
       </ProcessCreate>
+    </RuleGroup>
+    <RuleGroup groupRelation="or">
+      <!-- Event ID 1 == Process Creation - Excludes -->
+      <ProcessCreate onmatch="exclude" />
     </RuleGroup>
     <RuleGroup groupRelation="or">
       <!-- Event ID 2 == File Creation Time - Includes -->
