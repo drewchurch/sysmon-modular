@@ -272,10 +272,6 @@ function Merge-SysmonXml
 <ArchiveDirectory>Sysmon</ArchiveDirectory><!-- Sets the name of the directory in the C:\ root where preserved files will be saved (String)-->
 <EventFiltering>
     <RuleGroup groupRelation="or">
-        <!-- Event ID 1 == Process Creation - Includes -->
-        <ProcessCreate onmatch="exclude"/>
-    </RuleGroup>
-    <RuleGroup groupRelation="or">
         <!-- Event ID 1 == Process Creation - Excludes -->
         <ProcessCreate onmatch="exclude"/>
     </RuleGroup>
